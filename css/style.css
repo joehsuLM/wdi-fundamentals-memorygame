@@ -55,11 +55,15 @@ nav {
 	padding: 20px 0px;
 }
 
-a {
+/*a {
+	margin: 0px 20px;
+	border-bottom: 2px solid transparent;
+}*/
+
+.game_links {
 	margin: 0px 20px;
 	border-bottom: 2px solid transparent;
 }
-
 .game_links:hover {
 	background-color: #f15b31;
 }

@@ -27,6 +27,8 @@ var cardsInPlay = [];
 
 // this function checks for a match from the array:cardsInPlay
 var checkForMatch = function () {
+	
+	console.log("cards selected: " + cardsInPlay);
 	if (cardsInPlay[0] === cardsInPlay[1]){
 			alert("You found a match!");
 		} else {
@@ -34,23 +36,38 @@ var checkForMatch = function () {
 	}
 };
 
-// this function will run output to the console the cards chose and their attributes
+// this function will run output to the console the cards chosen and their attributes
 // addtionally, it will check for a match using the function:checkForMatch
-var flipCard = function (cardId) {
-	
-	console.log ("User flipped " + cards[cardId].rank);
+var flipCard = function () {
+	var cardId = this.getAttribute('data-id')
+	//console.log ("User flipped " + cards[cardId].rank);
 	cardsInPlay.push(cards[cardId].rank);
-	console.log(cards[cardId].suit);
-	console.log(cards[cardId].cardImage);
+	//console.log(cards[cardId].suit);
+	//console.log(cards[cardId].cardImage);
 
+	// loads the image of the card face when clicked
+	this.setAttribute('src', cards[cardId].cardImage);
+
+	// checks if there are two cards selected
 	if (cardsInPlay.length === 2) {
 		checkForMatch();
 	}
 };
 
-// this is the user "choosing" the cards
-flipCard(0);
-flipCard(1);
+// creates game board
+var createBoard = function () {
+	for (i = 0; i < cards.length; i++) {
+		cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.querySelector('#game-board').appendChild(cardElement);
+	}
+};
+
+
+// calls the function:game-board to create a board wit the cards
+createBoard();
 
 
 
