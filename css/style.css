@@ -100,3 +100,21 @@ footer {
 	color: #f15b31;
 	font-weight: 700;
 }
+
+.reset {
+	font-family: "Raleway", sans-serif;
+	color: rgb(200, 0, 0);
+	letter-spacing: 1px;
+	font-weight: 400;
+	font-size: 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin: 0;
+
+}
+
+.reset:hover {
+	color: rgb(255, 255, 255);
+	background-color: rgb(255, 0, 0);
+	display:inline-block;
+}

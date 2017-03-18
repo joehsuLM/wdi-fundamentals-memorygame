@@ -30,14 +30,9 @@ var cardsInPlay = [];
 // this function checks for a match from the array:cardsInPlay
 var checkForMatch = function () {
 	
-	console.log("cards selected\ncard 1: " + cardsInPlay[0] + "\ncard 2: " + cardsInPlay[1]);
-	/* this if does not check if the same exact card was selected
-	if (cardsInPlay[0] === cardsInPlay[1]){
-			alert("You found a match!");
-		} else {
-			alert("Sorry, try again");
-	}
-	*/
+	//console.log("cards selected\ncard 1: " + cardsInPlay[0] + "\ncard 2: " + cardsInPlay[1]);
+	console.log("card1 selected");
+	console.log(cardsInPlay[0]);
 
 	// attempt to check if same card is selected. if so, doesn't not qualify as a matchg
 	if (cardsInPlay[0].rank === cardsInPlay[1].rank && cardsInPlay[0].suit === cardsInPlay[1].suit){
@@ -64,6 +59,9 @@ var flipCard = function () {
 	// checks if there are two cards selected
 	if (cardsInPlay.length === 2) {
 		checkForMatch();
+
+	// resets cards in play for next match up
+		cardsInPlay = [];
 	}
 };
 
@@ -79,17 +77,24 @@ var createBoard = function () {
 };
 
 var reloadBoard = function () {
-	gameBoard = document.querySelector('.boardClearFix');
+	for (i = 0; i < cards.length; i++) {
+	gameBoard = document.querySelector('#game-board');
 	//this.parentNode.parentNode.removeChild(this.parentNode);
-	document.querySelector('main').removeChild('div');
+	gameBoard.removeChild(gameBoard.childNodes[0]);
+	//createBoard();
+	}
 	createBoard();
 };
 
-// hides the gameboard and show contents of instruction
-var showInstructions = function () {
-	//gameBoard = document.querySelector('#game-board');
-	document.querySelector('#game-board').style.display = 'none';
+
+var reset = function () {
+	
+	
+
 };
+
+document.querySelector('#reset-button').addEventListener('click', reloadBoard);
+
 // calls the function:game-board to create a board wit the cards
 createBoard();
 //showInstructions();
